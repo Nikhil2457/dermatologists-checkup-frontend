@@ -1,0 +1,59 @@
+/* ... existing code from AddDentistForm.css, but with all dentist/dental references changed to dermatologist/dermatology ... */ 
+
+.add-dermatologist-container {
+  max-width: 440px;
+  margin: 40px auto;
+  padding: 32px 24px;
+  background: #f6fbfa;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  text-align: center;
+}
+.add-dermatologist-container h2 {
+  color: #2a7f62;
+  margin-bottom: 24px;
+}
+.add-dermatologist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.add-dermatologist-form input[type="text"],
+.add-dermatologist-form input[type="number"] {
+  padding: 10px 12px;
+  border: 1px solid #b2dfdb;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #fff;
+  transition: border 0.2s;
+}
+.add-dermatologist-form input:focus {
+  border-color: #2a7f62;
+  outline: none;
+}
+.add-dermatologist-form button {
+  padding: 12px;
+  background: #2a7f62;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.add-dermatologist-form button:disabled {
+  background: #b2dfdb;
+  cursor: not-allowed;
+}
+.add-dermatologist-form button:not(:disabled):hover {
+  background: #249e7a;
+}
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  color: #2a7f62;
+  margin: 0 0 8px 0;
+  justify-content: flex-start;
+} 

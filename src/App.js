@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ProtectedRoute from './components/ProtectedRoute';
 
+import AuthPage from './components/AuthPage';
+import PatientDashboard from './components/PatientDashboard';
+import DermatologistDashboard from './components/DentistDashboard/indexDermatologist';
+import CreateDermatologistUser from './components/CreateDentistUser/CreateDermatologistUser';
+import RequestedStatus from './components/RequestedStatus/RequestedStatus';
+import AddDermatologistForm from './components/AddDentistForm/AddDermatologistForm';
+import AdminLogin from './components/AdminLogin';
+import AdminDashboard from './components/AdminDashboard';
+import PaymentStatus from './components/PaymentStatus';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<AuthPage />} />
+        <Route path="/dermatologists" element={
+          <ProtectedRoute requiredRole="patient">
+            <PatientDashboard />
+          </ProtectedRoute>
+        } />
+        <Route path="/patients" element={
+          <ProtectedRoute requiredRole="dermatologist">
+            <DermatologistDashboard />
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/create-dermatologist" element={<CreateDermatologistUser />} />
+        <Route path="/requested-status" element={<RequestedStatus />} />
+        <Route path="/admin/add-dermatologist" element={<AddDermatologistForm />} />
+        <Route path="/admin" element={<AdminLogin/>} />
+        <Route path='/admin/dashboard' element={<AdminDashboard/>} />
+        <Route path='/payment-status' element={<PaymentStatus/>} />
+      </Routes>
+
+      {/* ✅ Add ToastContainer once here */}
+      <ToastContainer position="top-right" autoClose={2000} />
+    </Router>
   );
 }
 

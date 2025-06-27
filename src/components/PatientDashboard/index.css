@@ -1,0 +1,779 @@
+/* PatientDashboard Component Styles */
+.patient-dashboard-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 30px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: patient-dashboard-container-fade-in 0.8s ease-out;
+}
+
+@keyframes patient-dashboard-container-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.patient-dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.patient-dashboard-title {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+  position: relative;
+  animation: patient-dashboard-title-fade-in 0.8s ease-out;
+}
+
+.patient-dashboard-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 2px;
+}
+
+@keyframes patient-dashboard-title-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.patient-logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+  animation: patient-logout-btn-slide-in 0.8s ease-out 0.2s both;
+}
+
+.patient-logout-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.patient-logout-btn:hover::before {
+  left: 100%;
+}
+
+.patient-logout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+}
+
+.patient-logout-btn:active {
+  transform: translateY(0);
+}
+
+.patient-logout-icon {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.patient-logout-btn:hover .patient-logout-icon {
+  transform: scale(1.1);
+}
+
+.patient-logout-text {
+  font-weight: 600;
+}
+
+@keyframes patient-logout-btn-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.patient-status-link {
+  display: inline-block;
+  margin-left: 20px;
+  font-size: 16px;
+  color: #667eea;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: rgba(102, 126, 234, 0.1);
+  transition: all 0.3s ease;
+  animation: patient-status-link-slide-in 0.8s ease-out 0.2s both;
+}
+
+.patient-status-link:hover {
+  background: rgba(102, 126, 234, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+@keyframes patient-status-link-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.patient-dermatologists-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: patient-dermatologists-grid-fade-in 0.8s ease-out 0.4s both;
+}
+
+@keyframes patient-dermatologists-grid-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.patient-dermatologist-card {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  animation: patient-dermatologist-card-float 0.6s ease-out;
+}
+
+.patient-dermatologist-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.patient-dermatologist-card:hover::before {
+  transform: scaleX(1);
+}
+
+.patient-dermatologist-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes patient-dermatologist-card-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.patient-dermatologist-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 20px;
+  display: block;
+  border: 4px solid #f8f9fa;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.patient-dermatologist-card:hover .patient-dermatologist-image {
+  transform: scale(1.05);
+  border-color: #667eea;
+}
+
+.patient-dermatologist-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin: 0 0 10px;
+}
+
+.patient-dermatologist-qualification {
+  color: #7f8c8d;
+  text-align: center;
+  margin: 0 0 15px;
+  font-size: 14px;
+}
+
+.patient-dermatologist-rating {
+  color: #f39c12;
+  text-align: center;
+  margin: 0 0 15px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.patient-dermatologist-experience,
+.patient-dermatologist-place,
+.patient-dermatologist-fee {
+  color: #34495e;
+  text-align: center;
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.patient-dermatologist-verification {
+  text-align: center;
+  margin: 0 0 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.patient-dermatologist-verification.verified {
+  color: #27ae60;
+}
+
+.patient-dermatologist-verification.not-verified {
+  color: #e74c3c;
+}
+
+.patient-dermatologist-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.patient-request-button {
+  width: 100%;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.patient-request-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.patient-request-button:hover::before {
+  left: 100%;
+}
+
+.patient-request-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.patient-request-button:active {
+  transform: translateY(0);
+}
+
+.patient-rate-button {
+  width: 100%;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(243, 156, 18, 0.3);
+}
+
+.patient-rate-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4);
+}
+
+.patient-view-reviews-button {
+  width: 100%;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(52, 152, 219, 0.3);
+}
+
+.patient-view-reviews-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+}
+
+.pay-first-message {
+  color: #e74c3c;
+  text-align: center;
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.patient-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: patient-popup-overlay-fade-in 0.3s ease-out;
+}
+
+@keyframes patient-popup-overlay-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.patient-popup-content {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  animation: patient-popup-content-slide-in 0.3s ease-out;
+}
+
+@keyframes patient-popup-content-slide-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.patient-close-button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.patient-close-button:hover {
+  background: #c0392b;
+  transform: scale(1.1);
+}
+
+.patient-loading-container {
+  text-align: center;
+  margin-top: 50px;
+  animation: patient-loading-fade-in 0.5s ease-out;
+}
+
+@keyframes patient-loading-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.patient-no-dermatologists {
+  text-align: center;
+  color: #6c757d;
+  font-size: 18px;
+  margin-top: 50px;
+  animation: patient-no-dermatologists-fade-in 0.5s ease-out;
+}
+
+@keyframes patient-no-dermatologists-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .patient-dashboard-container {
+    padding: 20px 15px;
+  }
+  
+  .patient-dashboard-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  
+  .patient-dashboard-title {
+    font-size: 28px;
+  }
+  
+  .patient-status-link {
+    margin-left: 0;
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+  
+  .patient-logout-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  
+  .patient-dermatologists-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .patient-dermatologist-card {
+    padding: 25px 20px;
+  }
+
+  .patient-dermatologist-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .patient-dermatologist-name {
+    font-size: 20px;
+  }
+
+  .patient-popup-content {
+    padding: 25px;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .patient-dashboard-title {
+    font-size: 24px;
+  }
+  
+  .patient-status-link {
+    display: block;
+    margin: 10px 0 0 0;
+    text-align: center;
+  }
+  
+  .patient-logout-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .patient-dermatologist-image {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .patient-dermatologist-name {
+    font-size: 18px;
+  }
+
+  .patient-dermatologist-card {
+    padding: 20px 15px;
+  }
+
+  .patient-popup-content {
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  .patient-close-button {
+    top: 10px;
+    right: 15px;
+    width: 25px;
+    height: 25px;
+    font-size: 14px;
+  }
+}
+
+/* Tablet Landscape */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .patient-dashboard-container {
+    padding: 25px 20px;
+  }
+
+  .patient-dashboard-title {
+    font-size: 30px;
+  }
+
+  .patient-dermatologists-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .patient-dermatologist-card {
+    padding: 28px 25px;
+  }
+
+  .patient-dermatologist-image {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+/* Large Screens */
+@media (min-width: 1200px) {
+  .patient-dashboard-container {
+    padding: 35px 25px;
+  }
+
+  .patient-dashboard-title {
+    font-size: 36px;
+  }
+
+  .patient-dermatologists-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+    max-width: 1400px;
+  }
+
+  .patient-dermatologist-card {
+    padding: 35px 30px;
+  }
+
+  .patient-dermatologist-image {
+    width: 130px;
+    height: 130px;
+  }
+
+  .patient-dermatologist-name {
+    font-size: 26px;
+  }
+}
+
+/* AI Assistant FAB */
+.patient-ai-fab {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4fa94d, #45a049);
+  color: white;
+  font-size: 28px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: all 0.3s ease;
+  animation: fab-pulse 2s infinite;
+}
+
+.patient-ai-fab:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  animation-play-state: paused;
+}
+
+/* AI Assistant Modal */
+.patient-ai-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: modal-overlay-fade-in 0.3s ease-out;
+}
+
+.patient-ai-modal-content {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  width: 90%;
+  max-width: 700px;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  animation: modal-content-slide-up 0.4s ease-out;
+}
+
+.patient-ai-modal-content .ai-assistant {
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
+
+.patient-ai-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #f1f1f1;
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.patient-ai-modal-close:hover {
+  background: #e74c3c;
+  color: white;
+  transform: rotate(90deg);
+}
+
+/* Responsive modal adjustments */
+@media (max-width: 768px) {
+  .patient-ai-fab {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    bottom: 20px;
+    right: 20px;
+  }
+  .patient-ai-modal-content {
+    width: 95%;
+    padding: 15px;
+  }
+}
+
+.patient-contact-fab {
+  position: fixed;
+  bottom: 110px; /* Above the AI FAB */
+  right: 30px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffb347, #ffcc33);
+  color: #fff;
+  font-size: 38px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  transition: all 0.3s cubic-bezier(.4,2,.6,1);
+  outline: none;
+}
+
+.patient-contact-fab:hover {
+  transform: scale(1.08) rotate(-8deg);
+  box-shadow: 0 12px 32px rgba(255, 193, 7, 0.35);
+  background: linear-gradient(135deg, #ffcc33, #ffb347);
+}
+
+.patient-contact-fab-label {
+  font-size: 14px;
+  color: #7a4f00;
+  font-weight: 600;
+  margin-top: 2px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px rgba(255,193,7,0.18), 0 1px 0 #fff;
+  pointer-events: none;
+  text-align: center;
+  line-height: 1.1;
+}
+
+@media (max-width: 768px) {
+  .patient-contact-fab {
+    width: 56px;
+    height: 56px;
+    font-size: 28px;
+    bottom: 90px;
+    right: 20px;
+  }
+  .patient-contact-fab-label {
+    font-size: 12px;
+  }
+}

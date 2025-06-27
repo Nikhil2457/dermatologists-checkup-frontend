@@ -1,0 +1,1284 @@
+/* DermatologistDashboard Component Styles */
+.dermatologist-dashboard-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e3f0ff 0%, #f8fbff 100%);
+  padding: 40px 0 40px 0;
+  font-family: 'Segoe UI', 'Roboto', 'Open Sans', Arial, sans-serif;
+  color: white;
+  animation: dermatologist-dashboard-container-fade-in 0.8s ease-out;
+}
+
+@keyframes dermatologist-dashboard-container-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dermatologist-dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  padding: 28px 32px;
+}
+
+.dermatologist-header-content {
+  flex: 1;
+  display: block;
+  flex-direction: unset;
+  align-items: unset;
+}
+
+.dermatologist-header-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.dermatologist-ratings-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
+  animation: dermatologist-ratings-btn-slide-in 0.8s ease-out 0.3s both;
+  white-space: nowrap;
+}
+
+.dermatologist-ratings-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.dermatologist-ratings-btn:hover::before {
+  left: 100%;
+}
+
+.dermatologist-ratings-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(243, 156, 18, 0.4);
+}
+
+.dermatologist-ratings-btn:active {
+  transform: translateY(0);
+}
+
+@keyframes dermatologist-ratings-btn-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.dermatologist-ratings-section {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 30px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: dermatologist-ratings-section-fade-in 0.6s ease-out;
+}
+
+@keyframes dermatologist-ratings-section-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dermatologist-ratings-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: left;
+  color: #1976d2;
+  border-bottom: 3px solid #bcd0ee;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+.dermatologist-welcome-text {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2a3d4d;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.dermatologist-section-title {
+  font-size: 1.4rem;
+  color: #1976d2;
+  font-weight: 600;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dermatologist-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+@keyframes dermatologist-dashboard-header-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dermatologist-logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+  animation: dermatologist-logout-btn-slide-in 0.8s ease-out 0.2s both;
+  white-space: nowrap;
+}
+
+.dermatologist-logout-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.dermatologist-logout-btn:hover::before {
+  left: 100%;
+}
+
+.dermatologist-logout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+}
+
+.dermatologist-logout-btn:active {
+  transform: translateY(0);
+}
+
+.dermatologist-logout-icon {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.dermatologist-logout-btn:hover .dermatologist-logout-icon {
+  transform: scale(1.1);
+}
+
+.dermatologist-logout-text {
+  font-weight: 600;
+}
+
+@keyframes dermatologist-logout-btn-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.dermatologist-filter-sort-controls {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  animation: dermatologist-filter-sort-fade-in 0.6s ease-out 0.4s both;
+}
+
+@keyframes dermatologist-filter-sort-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dermatologist-filter-sort-controls select {
+  padding: 10px 15px;
+  border: 2px solid #bcd0ee;
+  border-radius: 10px;
+  background: #fff;
+  color: #2a3d4d;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dermatologist-filter-sort-controls select:focus {
+  outline: none;
+  border-color: #1976d2;
+  background: #f0f6ff;
+  color: #2a3d4d;
+  transform: translateY(-2px);
+}
+
+.dermatologist-filter-sort-controls select option {
+  background: #fff;
+  color: #2a3d4d;
+}
+
+.dermatologist-requests-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  animation: dermatologist-requests-container-fade-in 0.8s ease-out 0.2s both;
+}
+
+@keyframes dermatologist-requests-container-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dermatologist-requests-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dermatologist-request-item {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 1px 8px rgba(44, 62, 80, 0.07);
+  margin-bottom: 24px;
+  padding: 24px 28px;
+  transition: box-shadow 0.2s;
+}
+
+.dermatologist-request-item:hover {
+  box-shadow: 0 4px 18px rgba(44, 62, 80, 0.13);
+}
+
+.dermatologist-request-info {
+  margin-bottom: 20px;
+}
+
+.dermatologist-request-info p {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #2a3d4d;
+}
+
+.dermatologist-request-images {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+
+.dermatologist-request-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.dermatologist-request-image:hover {
+  transform: scale(1.1);
+  border-color: #ffffff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.dermatologist-request-image-description {
+  font-size: 13px;
+  margin-top: 4px;
+  color: #2a3d4d;
+  text-align: center;
+  word-break: break-word;
+}
+
+.dermatologist-action-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.dermatologist-action-btn {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dermatologist-action-btn:hover {
+  background: #1565c0;
+}
+
+.dermatologist-btn-primary {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+}
+
+.dermatologist-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
+}
+
+.dermatologist-btn-secondary {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+}
+
+.dermatologist-btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+}
+
+.dermatologist-btn-success {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+}
+
+.dermatologist-btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
+}
+
+.dermatologist-form-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.dermatologist-form-input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  color: #222;
+  background: #fff;
+}
+
+.dermatologist-form-input::placeholder {
+  color: #888 !important;
+  opacity: 1;
+}
+
+.dermatologist-form-input:focus {
+  outline: none;
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.dermatologist-completed-info {
+  background: rgba(40, 167, 69, 0.2);
+  border: 1px solid rgba(40, 167, 69, 0.3);
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 15px;
+}
+
+.dermatologist-completed-info p {
+  margin: 8px 0;
+  color: #a8f5a8;
+  font-weight: 500;
+}
+
+.dermatologist-loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  animation: dermatologist-loading-fade-in 0.5s ease-out;
+}
+
+@keyframes dermatologist-loading-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.dermatologist-no-requests {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  margin-top: 50px;
+  animation: dermatologist-no-requests-fade-in 0.5s ease-out;
+}
+
+@keyframes dermatologist-no-requests-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dermatologist-dashboard-container {
+    padding: 20px 15px;
+  }
+  
+  .dermatologist-dashboard-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+  }
+  
+  .dermatologist-header-content {
+    text-align: center;
+  }
+
+  .dermatologist-header-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .dermatologist-ratings-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .dermatologist-ratings-section {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .dermatologist-ratings-title {
+    font-size: 20px;
+  }
+  
+  .dermatologist-welcome-text {
+    font-size: 28px;
+  }
+  
+  .dermatologist-section-title {
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .dermatologist-section-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .dermatologist-logout-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .dermatologist-filter-sort-controls {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .dermatologist-filter-sort-controls select {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  
+  .dermatologist-request-item {
+    padding: 20px;
+  }
+  
+  .dermatologist-action-buttons {
+    flex-direction: column;
+  }
+  
+  .dermatologist-action-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .dermatologist-welcome-text {
+    font-size: 24px;
+  }
+  
+  .dermatologist-section-title {
+    font-size: 20px;
+  }
+
+  .dermatologist-ratings-btn {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  .dermatologist-ratings-section {
+    padding: 16px;
+  }
+
+  .dermatologist-ratings-title {
+    font-size: 18px;
+  }
+  
+  .dermatologist-logout-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .dermatologist-filter-sort-controls {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dermatologist-filter-sort-controls select {
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .dermatologist-request-info p {
+    font-size: 14px;
+  }
+  
+  .dermatologist-request-images {
+    justify-content: center;
+  }
+  
+  .dermatologist-request-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .dermatologist-form-inputs {
+    gap: 10px;
+  }
+
+  .dermatologist-form-input {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Tablet Landscape */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .dermatologist-dashboard-container {
+    padding: 25px;
+  }
+  
+  .dermatologist-welcome-text {
+    font-size: 32px;
+  }
+  
+  .dermatologist-section-title {
+    font-size: 26px;
+  }
+  
+  .dermatologist-request-item {
+    padding: 25px;
+  }
+
+  .dermatologist-header-actions {
+    gap: 10px;
+  }
+
+  .dermatologist-ratings-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .dermatologist-dashboard-container {
+    padding: 40px;
+  }
+  
+  .dermatologist-welcome-text {
+    font-size: 40px;
+  }
+  
+  .dermatologist-section-title {
+    font-size: 30px;
+  }
+  
+  .dermatologist-request-item {
+    padding: 30px;
+  }
+  
+  .dermatologist-filter-sort-controls {
+    gap: 20px;
+  }
+  
+  .dermatologist-filter-sort-controls select {
+    padding: 12px 18px;
+    font-size: 16px;
+  }
+
+  .dermatologist-header-actions {
+    gap: 15px;
+  }
+
+  .dermatologist-ratings-btn {
+    padding: 14px 24px;
+    font-size: 18px;
+  }
+
+  .dermatologist-ratings-section {
+    padding: 30px;
+  }
+
+  .dermatologist-ratings-title {
+    font-size: 28px;
+  }
+}
+
+/* AI Assistant FAB */
+.dermatologist-ai-fab {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4fa94d, #45a049);
+  color: white;
+  font-size: 28px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: all 0.3s ease;
+  animation: fab-pulse 2s infinite;
+}
+
+.dermatologist-ai-fab:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  animation-play-state: paused;
+}
+
+@keyframes fab-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(79, 169, 77, 0.4);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* AI Assistant Modal */
+.dermatologist-ai-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: modal-overlay-fade-in 0.3s ease-out;
+}
+
+@keyframes modal-overlay-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.dermatologist-ai-modal-content {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  width: 90%;
+  max-width: 700px;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  animation: modal-content-slide-up 0.4s ease-out;
+  color: #333;
+}
+
+.dermatologist-ai-modal-content .ai-assistant {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+
+@keyframes modal-content-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.dermatologist-ai-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #f1f1f1;
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.dermatologist-ai-modal-close:hover {
+  background: #e74c3c;
+  color: white;
+  transform: rotate(90deg);
+}
+
+/* Responsive modal adjustments */
+@media (max-width: 768px) {
+  .dermatologist-ai-fab {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    bottom: 20px;
+    right: 20px;
+  }
+  .dermatologist-ai-modal-content {
+    width: 95%;
+    padding: 15px;
+  }
+}
+
+.dermatologist-requests-count {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  margin: -10px 0 25px;
+  color: #2a3d4d;
+  animation: count-fade-in 0.5s ease-out;
+}
+
+@keyframes count-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dermatologist-count-number {
+  font-weight: 700;
+  font-size: 20px;
+  color: #fff;
+  background-color: #1976d2;
+  padding: 4px 14px;
+  border-radius: 8px;
+  display: inline-block;
+  min-width: 30px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .dermatologist-requests-count {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .dermatologist-count-number {
+    font-size: 18px;
+  }
+}
+
+/* Dermatologist Request Sections */
+.dermatologist-request-section {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+  border-left: 4px solid #667eea;
+  animation: sectionFadeIn 0.5s ease-out;
+}
+
+@keyframes sectionFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dermatologist-section-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.dermatologist-request-header {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 0;
+}
+
+.dermatologist-status {
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.dermatologist-status-pending {
+  background: rgba(255, 193, 7, 0.2);
+  color: #856404;
+}
+
+.dermatologist-status-in-progress {
+  background: rgba(23, 162, 184, 0.2);
+  color: #0c5460;
+}
+
+.dermatologist-status-completed {
+  background: rgba(40, 167, 69, 0.2);
+  color: #155724;
+}
+
+/* Info Display */
+.dermatologist-info-row {
+  display: flex;
+  margin-bottom: 12px;
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.dermatologist-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.dermatologist-info-item {
+  background: white;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.dermatologist-info-item:hover {
+  border-color: #667eea;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+  transform: translateY(-1px);
+}
+
+.dermatologist-info-label {
+  font-weight: 600;
+  color: #495057;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+
+.dermatologist-info-value {
+  color: #2c3e50;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+/* Level Bars for Itch/Pain */
+.dermatologist-levels {
+  margin-top: 15px;
+}
+
+.dermatologist-level-item {
+  margin-bottom: 15px;
+}
+
+.dermatologist-level-bar {
+  position: relative;
+  height: 20px;
+  background: #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.dermatologist-level-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff6b6b, #ee5a24);
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+.dermatologist-level-text {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Image Container */
+.dermatologist-image-container {
+  display: inline-block;
+  margin: 10px 15px 10px 0;
+  text-align: center;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.dermatologist-image-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.dermatologist-request-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #e9ecef;
+}
+
+.dermatologist-request-image-description {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #6c757d;
+  max-width: 150px;
+  word-wrap: break-word;
+}
+
+/* Enhanced Request Item */
+.dermatologist-request-item {
+  background: white;
+  border-radius: 15px;
+  padding: 0;
+  margin-bottom: 25px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid #e9ecef;
+}
+
+.dermatologist-request-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.dermatologist-request-info {
+  margin-bottom: 0;
+}
+
+.dermatologist-request-info p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+}
+
+/* Action Buttons Enhancement */
+.dermatologist-action-buttons {
+  padding: 20px;
+  background: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.dermatologist-form-inputs {
+  display: flex;
+  gap: 15px;
+  flex: 1;
+  min-width: 300px;
+}
+
+.dermatologist-form-input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  color: #222;
+  background: #fff;
+}
+
+.dermatologist-form-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.dermatologist-action-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  min-width: 120px;
+}
+
+.dermatologist-btn-primary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+.dermatologist-btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.dermatologist-btn-secondary {
+  background: linear-gradient(135deg, #6c757d, #495057);
+  color: white;
+}
+
+.dermatologist-btn-secondary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+}
+
+.dermatologist-btn-success {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+}
+
+.dermatologist-btn-success:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+.dermatologist-action-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Completed Info Enhancement */
+.dermatologist-completed-info {
+  background: linear-gradient(135deg, #d4edda, #c3e6cb);
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin: 15px 20px;
+  border: 1px solid #c3e6cb;
+}
+
+.dermatologist-completed-info p {
+  margin: 8px 0;
+  color: #155724;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dermatologist-request-section {
+    padding: 15px;
+    margin: 10px 0;
+  }
+
+  .dermatologist-info-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .dermatologist-info-row {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .dermatologist-image-container {
+    margin: 10px 5px;
+  }
+
+  .dermatologist-request-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .dermatologist-form-inputs {
+    flex-direction: column;
+    min-width: auto;
+  }
+
+  .dermatologist-action-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dermatologist-action-btn {
+    width: 100%;
+  }
+
+  .dermatologist-section-title {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dermatologist-request-section {
+    padding: 12px;
+  }
+
+  .dermatologist-request-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .dermatologist-info-label,
+  .dermatologist-info-value {
+    font-size: 0.85rem;
+  }
+
+  .dermatologist-level-bar {
+    height: 16px;
+  }
+
+  .dermatologist-level-text {
+    font-size: 0.7rem;
+  }
+}
+
+/* Loading and Empty States */
+.dermatologist-loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  color: #6c757d;
+}
+
+.dermatologist-no-requests {
+  text-align: center;
+  padding: 50px;
+  color: #6c757d;
+  font-size: 1.1rem;
+}
+
+/* Smooth Transitions */
+.dermatologist-request-item * {
+  transition: all 0.3s ease;
+}
+
+/* Print Styles */
+@media print {
+  .dermatologist-action-buttons,
+  .dermatologist-ai-fab {
+    display: none !important;
+  }
+
+  .dermatologist-request-item {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+} 

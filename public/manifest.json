@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "DermCheck",
+  "name": "Dermatology Checkup App",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,7 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#E0B7A4",
+  "background_color": "#F5E9E2",
+  "description": "A modern, responsive dermatology checkup and consultation app."
 }

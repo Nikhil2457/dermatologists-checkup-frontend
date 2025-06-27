@@ -1,0 +1,85 @@
+.paypal-hosted-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+}
+
+.paypal-button-container #paypal-container-RY37S4FPZW5LY {
+  width: 100%;
+  max-width: 200px;
+}
+
+.paypal-loading {
+  color: #6c757d;
+  font-size: 14px;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Ensure PayPal button fits well within the dermatologist card */
+.patient-dermatologist-card .paypal-hosted-button-container {
+  margin: 8px 0;
+  padding: 8px;
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .paypal-hosted-button-container {
+    padding: 8px;
+  }
+  
+  .paypal-button-container #paypal-container-RY37S4FPZW5LY {
+    max-width: 180px;
+  }
+}
+
+.pp-RY37S4FPZW5LY {
+  text-align: center;
+  border: none;
+  border-radius: 0.25rem;
+  min-width: 11.625rem;
+  padding: 0 2rem;
+  height: 2.625rem;
+  font-weight: bold;
+  background-color: #FFD140;
+  color: #000000;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  cursor: pointer;
+}
+
+/* PhonePe payment button styles */
+.phonepe-pay-btn {
+  width: 100%;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #5b2cff, #673ab7);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(91, 44, 255, 0.2);
+}
+
+.phonepe-pay-btn:disabled {
+  background: #bdbdbd;
+  cursor: not-allowed;
+}
+
+.phonepe-pay-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #7c4dff, #512da8);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(91, 44, 255, 0.3);
+} 
