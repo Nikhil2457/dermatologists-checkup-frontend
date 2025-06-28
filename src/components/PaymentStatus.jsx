@@ -18,13 +18,18 @@ const PaymentStatus = () => {
   useEffect(() => {
     const checkStatusAndMarkPaid = async () => {
       try {
+        const token = localStorage.getItem('token');
         // 1. Check payment status from backend
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/phonepe/status/${orderId}`);
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/phonepe/status/${orderId}`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
         if (res.data.status === 'SUCCESS') {
           // 2. Mark payment as paid in your DB
           await axios.post(`${process.env.REACT_APP_API_URL}/api/payments/mark-paid`, {
             patientId,
             dermatologistId
+          }, {
+            headers: { Authorization: `Bearer ${token}` }
           });
           setStatus('success');
           toast.success('Payment successful! You can now submit your checkup request.');
