@@ -33,6 +33,8 @@ function App() {
         <Route path="/admin" element={<AdminLogin/>} />
         <Route path='/admin/dashboard' element={<AdminDashboard/>} />
         <Route path='/payment-status' element={<PaymentStatus/>} />
+        {/* Catch-all route for client-side routing */}
+        <Route path="*" element={<AuthPage />} />
       </Routes>
 
       {/* ✅ Add ToastContainer once here */}
