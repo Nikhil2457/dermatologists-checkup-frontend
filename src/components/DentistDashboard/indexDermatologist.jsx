@@ -41,7 +41,10 @@ const DermatologistDashboard = () => {
   const closeAiModal = () => setIsAiModalOpen(false);
 
   useEffect(() => {
-    axios.get('/api/dermatologist/me', { withCredentials: true })
+    const token = localStorage.getItem('token');
+    axios.get(`${process.env.REACT_APP_API_URL}/api/dermatologist/me`, { 
+      headers: { Authorization: `Bearer ${token}` }
+    })
       .then(res => {
         setDermatologistName(res.data.profile.name);
         setDermatologistId(res.data.profile._id);
@@ -53,7 +56,7 @@ const DermatologistDashboard = () => {
       setLoading(true);
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/dermatologist/requests`, {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/dermatologist/me/requests`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         let data = response.data.requests;
@@ -79,7 +82,10 @@ const DermatologistDashboard = () => {
   const refreshRequests = async () => {
     setLoading(true);
     try {
-      const res = await axios.get('/api/dermatologist/me/requests', { withCredentials: true });
+      const token = localStorage.getItem('token');
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/dermatologist/me/requests`, { 
+        headers: { Authorization: `Bearer ${token}` }
+      });
       setRequests(res.data.requests);
     } catch (err) {
       console.error(err);
@@ -91,19 +97,25 @@ const DermatologistDashboard = () => {
 
   const markInProgress = async (id) => {
     setActionLoadingId(id);
-    await axios.patch(`/api/dermatologist/me/${id}/update`, {
+    const token = localStorage.getItem('token');
+    await axios.patch(`${process.env.REACT_APP_API_URL}/api/dermatologist/me/${id}/update`, {
       status: 'In Progress'
-    }, { withCredentials: true });
+    }, { 
+      headers: { Authorization: `Bearer ${token}` }
+    });
     await refreshRequests();
   };
 
   const markCompleted = async (id) => {
     setActionLoadingId(id);
-    await axios.patch(`/api/dermatologist/me/${id}/update`, {
+    const token = localStorage.getItem('token');
+    await axios.patch(`${process.env.REACT_APP_API_URL}/api/dermatologist/me/${id}/update`, {
       status: 'Completed',
       products: productInput,
       description: descInput
-    }, { withCredentials: true });
+    }, { 
+      headers: { Authorization: `Bearer ${token}` }
+    });
     setEditRequestId(null);
     setProductInput('');
     setDescInput('');

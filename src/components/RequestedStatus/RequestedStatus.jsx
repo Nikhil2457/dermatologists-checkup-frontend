@@ -13,11 +13,14 @@ const RequestedStatus = () => {
 
   useEffect(() => {
   setLoading(true); // ✅ Move here
-  axios.get(`${process.env.REACT_APP_API_URL}/api/patient/me`, { withCredentials: true })
+  const token = localStorage.getItem('token');
+  axios.get(`${process.env.REACT_APP_API_URL}/api/patient/me`, { 
+    headers: { Authorization: `Bearer ${token}` }
+  })
     .then(res => {
       const patientId = res.data._id;
       return axios.get(`${process.env.REACT_APP_API_URL}/api/patient/${patientId}/requests?status=${filter}`, {
-        withCredentials: true
+        headers: { Authorization: `Bearer ${token}` }
       });
     })
     .then(res => {
@@ -77,9 +80,10 @@ const RequestedStatus = () => {
   // Download PDF from backend
   const downloadPDF = async (req) => {
     try {
+      const token = localStorage.getItem('token');
       const response = await fetch(`${process.env.REACT_APP_API_URL}/api/export/${req._id}`, {
         method: 'GET',
-        credentials: 'include',
+        headers: { Authorization: `Bearer ${token}` }
       });
       if (!response.ok) throw new Error('Failed to download PDF');
       const blob = await response.blob();

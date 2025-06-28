@@ -64,19 +64,24 @@ const CheckupRequestUpload = ({ dermatologistId, patientId, checkupRequestId, on
 
     try {
       if (checkupRequestId) {
-        payload.append('checkupRequestId', checkupRequestId);
-        await axios.patch(
+        const token = localStorage.getItem('token');
+        const response = await axios.post(
           `${process.env.REACT_APP_API_URL}/api/checkup-request/${checkupRequestId}/add-images`,
           payload,
           {
-            headers: { 'Content-Type': 'multipart/form-data' },
-            withCredentials: true,
+            headers: { 
+              'Content-Type': 'multipart/form-data',
+              Authorization: `Bearer ${token}`
+            }
           }
         );
       } else {
-        await axios.post(`${process.env.REACT_APP_API_URL}/api/checkup-request`, payload, {
-          headers: { 'Content-Type': 'multipart/form-data' },
-          withCredentials: true,
+        const token = localStorage.getItem('token');
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/checkup-request`, payload, {
+          headers: { 
+            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${token}`
+          }
         });
       }
 

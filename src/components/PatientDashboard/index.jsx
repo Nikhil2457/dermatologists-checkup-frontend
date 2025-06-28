@@ -146,7 +146,10 @@ const PatientDashboard = () => {
     if (!patientId) return;
     const fetchAll = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/dermatologists`, { withCredentials: true });
+        const token = localStorage.getItem('token');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/dermatologists`, { 
+          headers: { Authorization: `Bearer ${token}` }
+        });
         setDermatologists(response.data);
         setLoading(false);
         await fetchPaymentStatus(patientId, response.data);

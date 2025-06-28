@@ -63,11 +63,14 @@ const CreateDermatologistUser = () => {
     }
     setLoading(true);
     try {
-      const res = await axios.post('/api/admin/create-dermatologist-user', {
+      const token = localStorage.getItem('admin_token');
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/admin/create-dermatologist-user`, {
         phoneNumber,
         password
-      }, { withCredentials: true });
-      toast.success(res.data.message || 'Dermatologist user created successfully!');
+      }, { 
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      toast.success(response.data.message || 'Dermatologist user created successfully!');
       setPhoneNumber('');
       setPassword('');
       setPhoneError('');

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import './index.css';
+import { toast } from 'react-toastify';
 
 const RatingForm = ({ dermatologistId, dermatologistName, onRatingSubmitted, onClose }) => {
   const [stars, setStars] = useState(0);
@@ -9,12 +10,14 @@ const RatingForm = ({ dermatologistId, dermatologistName, onRatingSubmitted, onC
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [existingRating, setExistingRating] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
 
   const checkExistingRating = useCallback(async () => {
     if (!dermatologistId) return;
     try {
-      const response = await axios.get(`/api/ratings/check/${dermatologistId}`, {
-        withCredentials: true
+      const token = localStorage.getItem('token');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/ratings/check/${dermatologistId}`, {
+        headers: { Authorization: `Bearer ${token}` }
       });
       if (response.data.hasRated) {
         setExistingRating(response.data.rating);
@@ -63,11 +66,14 @@ const RatingForm = ({ dermatologistId, dermatologistName, onRatingSubmitted, onC
         }, { withCredentials: true });
       } else {
         // Submit new rating
-        await axios.post('/api/ratings', {
+        const token = localStorage.getItem('token');
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/ratings`, {
           dermatologistId,
           stars,
           message
-        }, { withCredentials: true });
+        }, { 
+          headers: { Authorization: `Bearer ${token}` }
+        });
       }
       onRatingSubmitted();
       onClose();
