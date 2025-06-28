@@ -106,8 +106,8 @@ function AuthPage() {
         toast.error(`You are not logged in with ${role} credentials.`);
         return;
       }
-      Cookies.set('token', res.data.token, { expires: 1 });
-      Cookies.set('role', res.data.role);
+      localStorage.setItem('token', res.data.token);
+      localStorage.setItem('role', res.data.role);
       toast.success(`${isLogin ? 'Login' : 'Signup'} successful!`);
       setIsRedirecting(true);
       setTimeout(() => {

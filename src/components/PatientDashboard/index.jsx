@@ -111,7 +111,10 @@ const PatientDashboard = () => {
 
   const fetchDermatologists = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/dermatologists`, { withCredentials: true });
+      const token = localStorage.getItem('token');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/dermatologists`, { 
+        headers: { Authorization: `Bearer ${token}` }
+      });
       setDermatologists(response.data);
       setLoading(false);
       await fetchPaymentStatus(patientId, response.data);
@@ -122,13 +125,21 @@ const PatientDashboard = () => {
     }
   };
 
+  const fetchPatientData = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/patient/me`, { 
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setPatientId(response.data._id);
+      setPatientName(response.data.username);
+    } catch (error) {
+      console.error('Error fetching patient info:', error);
+    }
+  };
+
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/api/patient/me`, { withCredentials: true })
-      .then(response => {
-        setPatientId(response.data._id);
-        setPatientName(response.data.username);
-      })
-      .catch(error => console.error('Error fetching patient info:', error));
+    fetchPatientData();
   }, []);
 
   useEffect(() => {
@@ -147,6 +158,17 @@ const PatientDashboard = () => {
     };
     fetchAll();
   }, [patientId]);
+
+  const fetchRequests = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/patient/${patientId}/requests?status=${filter}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+    } catch (error) {
+      console.error('Error fetching requests:', error);
+    }
+  };
 
   return (
     <div className="patient-dashboard-container">

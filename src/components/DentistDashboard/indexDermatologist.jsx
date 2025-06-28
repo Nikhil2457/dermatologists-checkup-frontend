@@ -52,8 +52,11 @@ const DermatologistDashboard = () => {
     const fetchRequests = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(`/api/dermatologist/me/requests?status=${filter}`, { withCredentials: true });
-        let data = res.data.requests;
+        const token = localStorage.getItem('token');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/dermatologist/requests`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        let data = response.data.requests;
 
         if (sortOrder === 'asc') {
           data.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
@@ -62,7 +65,7 @@ const DermatologistDashboard = () => {
         }
 
         setRequests(data);
-        setRequestCount(res.data.count);
+        setRequestCount(response.data.count);
       } catch (err) {
         console.error('Error fetching requests:', err);
       } finally {

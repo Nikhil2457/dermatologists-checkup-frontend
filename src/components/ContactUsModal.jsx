@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 const ContactUsModal = ({ userRole, onClose }) => {
   const [user, setUser] = useState(null);
@@ -11,15 +12,28 @@ const ContactUsModal = ({ userRole, onClose }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchUserAndIssues = async () => {
-      setLoading(true);
+    const fetchUserInfo = async () => {
       try {
-        let userRes;
+        const token = localStorage.getItem('token');
+        let userRes, dermRes;
+        
+        try {
+          userRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/patient/me`, { 
+            headers: { Authorization: `Bearer ${token}` }
+          });
+        } catch (err) {
+          try {
+            dermRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/dermatologist/me`, { 
+              headers: { Authorization: `Bearer ${token}` }
+            });
+          } catch (dermErr) {
+            console.log('No user logged in');
+            return;
+          }
+        }
         if (userRole === 'patient') {
-          userRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/patient/me`, { withCredentials: true });
           setUser(userRes.data);
         } else {
-          const dermRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/dermatologist/me`, { withCredentials: true });
           const userObj = dermRes.data.user;
           const profile = dermRes.data.profile;
           setUser({
@@ -28,32 +42,47 @@ const ContactUsModal = ({ userRole, onClose }) => {
             role: userObj.role
           });
         }
-        const issuesRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/support-issue/mine`, { withCredentials: true });
-        setIssues(issuesRes.data.issues || []);
+        await fetchIssues();
       } catch (err) {
         setError('Failed to load user or issues');
       } finally {
         setLoading(false);
       }
     };
-    fetchUserAndIssues();
+    fetchUserInfo();
   }, [userRole]);
 
   const pendingIssue = issues.find(i => i.status === 'pending');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSubmitting(true);
-    setError(null);
+  const fetchIssues = async () => {
     try {
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/support-issue`, { issue: issueText }, { withCredentials: true });
-      setSuccess(res.data);
-      setIssueText('');
-      // Refresh issues
-      const issuesRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/support-issue/mine`, { withCredentials: true });
+      const token = localStorage.getItem('token');
+      const issuesRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/support-issue/mine`, { 
+        headers: { Authorization: `Bearer ${token}` }
+      });
       setIssues(issuesRes.data.issues || []);
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to submit issue');
+      console.error('Error fetching issues:', err);
+    }
+  };
+
+  const submitIssue = async (e) => {
+    e.preventDefault();
+    if (!issueText.trim()) {
+      toast.error('Please enter an issue description');
+      return;
+    }
+    setSubmitting(true);
+    try {
+      const token = localStorage.getItem('token');
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/support-issue`, { issue: issueText }, { 
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      toast.success('Issue submitted successfully!');
+      setIssueText('');
+      await fetchIssues();
+    } catch (err) {
+      toast.error(err.response?.data?.message || 'Failed to submit issue');
     } finally {
       setSubmitting(false);
     }
@@ -101,7 +130,7 @@ const ContactUsModal = ({ userRole, onClose }) => {
                 <span style={{ fontSize:13, color:'#888' }}>You can raise a new issue after this is clarified.</span>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} style={{ marginBottom:16 }}>
+              <form onSubmit={submitIssue} style={{ marginBottom:16 }}>
                 <label htmlFor="contact-issue">Describe your problem:</label>
                 <textarea
                   id="contact-issue"

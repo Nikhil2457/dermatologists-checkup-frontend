@@ -24,15 +24,25 @@ const AdminDashboard = () => {
   const [totalIssues, setTotalIssues] = useState(0);
 
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/api/admin/stats`, { withCredentials: true })
-      .then(res => setStats(res.data))
-      .catch(err => console.error('Error fetching stats:', err));
-    // Fetch total support issues
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/api/support-issue/all`, { withCredentials: true })
-      .then(res => setTotalIssues(res.data.issues.length))
-      .catch(err => setTotalIssues(0));
+    const fetchData = async () => {
+      try {
+        const adminToken = localStorage.getItem('admin_token');
+        const [statsRes, issuesRes] = await Promise.all([
+          axios.get(`${process.env.REACT_APP_API_URL}/api/admin/stats`, {
+            headers: { Authorization: `Bearer ${adminToken}` }
+          }),
+          axios.get(`${process.env.REACT_APP_API_URL}/api/support-issue/all`, {
+            headers: { Authorization: `Bearer ${adminToken}` }
+          })
+        ]);
+        setStats(statsRes.data);
+        setTotalIssues(issuesRes.data.issues.length);
+      } catch (err) {
+        console.error('Error fetching stats:', err);
+      }
+    };
+
+    fetchData();
   }, []);
 
   // 🕒 Timer countdown logic
@@ -56,14 +66,20 @@ const AdminDashboard = () => {
 
   useEffect(() => {
   // Verify session & get welcome message
-  axios.get(`${process.env.REACT_APP_API_URL}/api/admin/dashboard`, { withCredentials: true })
-    .then(res => {
-      setAdminMessage(res.data.message); // "Welcome Admin!"
-    })
-    .catch(() => {
+  const fetchDashboardData = async () => {
+    try {
+      const adminToken = localStorage.getItem('admin_token');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/admin/dashboard`, {
+        headers: { Authorization: `Bearer ${adminToken}` }
+      });
+      setAdminMessage(response.data.message); // "Welcome Admin!"
+    } catch (err) {
       Cookies.remove('admin_token');
       navigate('/admin');
-    });
+    }
+  };
+
+  fetchDashboardData();
 }, [navigate]);
   // 🔐 Check token on mount
 //   useEffect(() => {

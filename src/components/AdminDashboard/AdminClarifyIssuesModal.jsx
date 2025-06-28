@@ -15,7 +15,10 @@ const AdminClarifyIssuesModal = ({ onClose }) => {
   const fetchIssues = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/support-issue/all`, { withCredentials: true });
+      const adminToken = localStorage.getItem('admin_token');
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/support-issue/all`, {
+        headers: { Authorization: `Bearer ${adminToken}` }
+      });
       setIssues(res.data.issues || []);
     } catch (err) {
       setError('Failed to fetch issues');
@@ -28,7 +31,10 @@ const AdminClarifyIssuesModal = ({ onClose }) => {
     setClarifying(tokenId);
     setError(null);
     try {
-      await axios.patch(`${process.env.REACT_APP_API_URL}/api/support-issue/${tokenId}/clarify`, {}, { withCredentials: true });
+      const adminToken = localStorage.getItem('admin_token');
+      await axios.patch(`${process.env.REACT_APP_API_URL}/api/support-issue/${tokenId}/clarify`, {}, {
+        headers: { Authorization: `Bearer ${adminToken}` }
+      });
       await fetchIssues();
     } catch (err) {
       setError('Failed to clarify issue');

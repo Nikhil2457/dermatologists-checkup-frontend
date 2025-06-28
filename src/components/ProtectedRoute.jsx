@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 /**
  * ProtectedRoute for role-based access
@@ -9,8 +8,8 @@ import { toast } from 'react-toastify';
  * @param {string} redirectTo - The path to redirect to if access is denied
  */
 const ProtectedRoute = ({ children, requiredRole, redirectTo = '/' }) => {
-  const token = Cookies.get('token');
-  const role = Cookies.get('role');
+  const token = localStorage.getItem('token');
+  const role = localStorage.getItem('role');
   const location = useLocation();
 
   useEffect(() => {

@@ -15,8 +15,8 @@ const AdminLogin = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/admin/login`, { username, password }, { withCredentials: true });
-      Cookies.set('admin_token', res.data.token);
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/admin/login`, { username, password });
+      localStorage.setItem('admin_token', res.data.token);
       toast.success('Admin login successful');
       navigate('/admin/dashboard');
     } catch (err) {
