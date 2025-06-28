@@ -15,7 +15,7 @@ const RatingDisplay = ({ dermatologistId, dermatologistName }) => {
     if (!dermatologistId) return;
     try {
       const response = await axios.get(
-        `/api/ratings/dermatologist/${dermatologistId}?page=${currentPage}&limit=5`
+        `${process.env.REACT_APP_API_URL}/api/ratings/dermatologist/${dermatologistId}?page=${currentPage}&limit=5`
       );
       setRatings(response.data.ratings);
       setTotalPages(response.data.totalPages);
@@ -30,7 +30,7 @@ const RatingDisplay = ({ dermatologistId, dermatologistName }) => {
     if (!dermatologistId) return;
     try {
       const response = await axios.get(
-        `/api/ratings/dermatologist/${dermatologistId}/average`
+        `${process.env.REACT_APP_API_URL}/api/ratings/dermatologist/${dermatologistId}/average`
       );
       setAverageRating(response.data.averageRating);
       setTotalRatings(response.data.totalRatings);

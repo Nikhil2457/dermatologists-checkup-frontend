@@ -60,10 +60,13 @@ const RatingForm = ({ dermatologistId, dermatologistName, onRatingSubmitted, onC
     try {
       if (existingRating) {
         // Update existing rating
-        await axios.put(`/api/ratings/${existingRating._id}`, {
+        const token = localStorage.getItem('token');
+        await axios.put(`${process.env.REACT_APP_API_URL}/api/ratings/${existingRating._id}`, {
           stars,
           message
-        }, { withCredentials: true });
+        }, { 
+          headers: { Authorization: `Bearer ${token}` }
+        });
       } else {
         // Submit new rating
         const token = localStorage.getItem('token');
