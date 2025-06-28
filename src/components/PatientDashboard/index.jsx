@@ -159,17 +159,6 @@ const PatientDashboard = () => {
     fetchAll();
   }, [patientId]);
 
-  const fetchRequests = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/patient/${patientId}/requests?status=${filter}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-    } catch (error) {
-      console.error('Error fetching requests:', error);
-    }
-  };
-
   return (
     <div className="patient-dashboard-container">
       <div className="patient-dashboard-header">
