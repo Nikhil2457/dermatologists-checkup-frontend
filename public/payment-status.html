@@ -47,17 +47,13 @@
         const patientId = urlParams.get('patientId');
         const dermatologistId = urlParams.get('dermatologistId');
         
-        // Redirect to React app with parameters
-        const redirectUrl = `/payment-status?orderId=${orderId}&patientId=${patientId}&dermatologistId=${dermatologistId}`;
-        
-        // Try to redirect to React route first
-        setTimeout(() => {
-            window.location.href = redirectUrl;
-        }, 1000);
+        // Redirect to React app with parameters (HashRouter)
+        const redirectUrl = `/#/payment-status?orderId=${orderId}&patientId=${patientId}&dermatologistId=${dermatologistId}`;
+        window.location.replace(redirectUrl);
         
         // Fallback: if React route doesn't work, show error
         setTimeout(() => {
-            if (window.location.pathname !== '/payment-status') {
+            if (!window.location.hash.startsWith('#/payment-status')) {
                 document.body.innerHTML = `
                     <div class="container">
                         <h2>⚠️ Routing Issue</h2>
