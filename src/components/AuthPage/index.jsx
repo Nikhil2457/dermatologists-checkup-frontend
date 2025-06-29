@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './index.css';
 import { toast } from 'react-toastify';
 import { TailSpin } from 'react-loader-spinner';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 function AuthPage() {
   const [role, setRole] = useState('patient'); // patient or dermatologist
@@ -18,6 +19,8 @@ function AuthPage() {
   const [otpLoading, setOtpLoading] = useState(false);
   const [otpCooldown, setOtpCooldown] = useState(0);
   const [isRedirecting, setIsRedirecting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [agreedTerms, setAgreedTerms] = useState(false);
   const navigate = useNavigate();
 
   const toggleRole = (newRole) => {
@@ -90,6 +93,10 @@ function AuthPage() {
       }
       if (!otpVerified) {
         toast.error('Please verify your phone number with OTP');
+        return;
+      }
+      if (!agreedTerms) {
+        toast.error('You must agree to the Terms & Conditions and Privacy Policy');
         return;
       }
     }
@@ -169,14 +176,25 @@ function AuthPage() {
             onChange={(e) => setUsername(e.target.value)}
             required
           />
-          <input
-            className="auth-page-input"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+          <div className="auth-page-password-wrapper">
+            <input
+              className="auth-page-input"
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <button
+              type="button"
+              className="auth-page-password-toggle"
+              onClick={() => setShowPassword((v) => !v)}
+              tabIndex={-1}
+              aria-label={showPassword ? 'Hide password' : 'Show password'}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
+          </div>
 
           {/* Patient Signup: Phone + OTP Flow */}
           {!isLogin && role === 'patient' && (
@@ -243,6 +261,21 @@ function AuthPage() {
                   Phone number verified!
                 </div>
               )}
+              {/* Terms & Conditions Checkbox */}
+              <div className="auth-page-terms-row">
+                <input
+                  type="checkbox"
+                  id="terms"
+                  checked={agreedTerms}
+                  onChange={e => setAgreedTerms(e.target.checked)}
+                  required
+                />
+                <label htmlFor="terms" className="auth-page-terms-label">
+                  I agree to the{' '}
+                  <Link to="/terms" target="_blank" rel="noopener noreferrer">Terms & Conditions</Link>{' '}and{' '}
+                  <Link to="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</Link>
+                </label>
+              </div>
             </>
           )}
 

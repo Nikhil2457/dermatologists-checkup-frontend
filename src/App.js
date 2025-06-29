@@ -12,11 +12,22 @@ import AddDermatologistForm from './components/AddDentistForm/AddDermatologistFo
 import AdminLogin from './components/AdminLogin';
 import AdminDashboard from './components/AdminDashboard';
 import PaymentStatus from './components/PaymentStatus';
+import LandingPage from './components/LandingPage';
+import TermsOfService from './components/TermsOfService';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import RefundPolicy from './components/RefundPolicy';
+import ContactUs from './components/ContactUs';
+
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<AuthPage />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/auth" element={<AuthPage />} />
+        <Route path="/terms" element={<TermsOfService />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/refund" element={<RefundPolicy />} />
+        <Route path="/contact" element={<ContactUs />} />
         <Route path="/dermatologists" element={
           <ProtectedRoute requiredRole="patient">
             <PatientDashboard />
@@ -33,11 +44,9 @@ function App() {
         <Route path="/admin" element={<AdminLogin/>} />
         <Route path='/admin/dashboard' element={<AdminDashboard/>} />
         <Route path='/payment-status' element={<PaymentStatus/>} />
-        {/* Catch-all route for client-side routing */}
-        <Route path="*" element={<AuthPage />} />
+        <Route path="*" element={<LandingPage />} />
       </Routes>
 
-      {/* ✅ Add ToastContainer once here */}
       <ToastContainer position="top-right" autoClose={2000} />
     </Router>
   );

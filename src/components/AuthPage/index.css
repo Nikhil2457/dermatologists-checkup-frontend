@@ -255,3 +255,59 @@
   align-items: center;
 }
 
+.auth-page-password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.auth-page-password-wrapper .auth-page-input {
+  flex: 1;
+  padding-right: 44px;
+}
+.auth-page-password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #667eea;
+  font-size: 1.2rem;
+  padding: 4px;
+  z-index: 2;
+  outline: none;
+  transition: color 0.2s;
+}
+.auth-page-password-toggle:hover {
+  color: #764ba2;
+}
+
+.auth-page-terms-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  font-size: 14px;
+}
+.auth-page-terms-row input[type="checkbox"] {
+  accent-color: #667eea;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+}
+.auth-page-terms-label {
+  color: #555;
+  line-height: 1.5;
+  user-select: none;
+}
+.auth-page-terms-label a {
+  color: #667eea;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.auth-page-terms-label a:hover {
+  color: #764ba2;
+}
+
