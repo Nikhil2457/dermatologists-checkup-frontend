@@ -47,28 +47,28 @@ const ContactUs = () => {
             icon: '📧',
             title: 'Email Support',
             description: 'Get detailed responses within 24 hours',
-            contact: 'support@dermacare.com',
+            contact: 'nikhiljagatkari@gmail.com',
             response: '24 hours'
         },
         {
             icon: '📞',
             title: 'Phone Support',
             description: 'Speak directly with our support team',
-            contact: '+1 (555) 123-4567',
+            contact: '+91 7569382457',
             response: 'Immediate'
         },
         {
             icon: '💬',
             title: 'Live Chat',
             description: 'Real-time chat support during business hours',
-            contact: 'Available 9 AM - 6 PM EST',
+            contact: 'Available 9 AM - 6 PM IST',
             response: 'Real-time'
         },
         {
             icon: '🚨',
             title: 'Emergency Support',
             description: 'For urgent medical or technical issues',
-            contact: '+1 (555) 999-8888',
+            contact: '+91 7569382457',
             response: 'Immediate'
         }
     ];
@@ -237,16 +237,25 @@ const ContactUs = () => {
                         <div className="office-info">
                             <h2>Office Information</h2>
                             <div className="info-item">
+                                <strong>Contact Person:</strong>
+                                <p>Jagatkari Nikhil</p>
+                            </div>
+                            <div className="info-item">
                                 <strong>Business Hours:</strong>
-                                <p>Monday - Friday: 9:00 AM - 6:00 PM EST<br />
-                                Saturday: 10:00 AM - 4:00 PM EST<br />
+                                <p>Monday - Friday: 9:00 AM - 6:00 PM IST<br />
+                                Saturday: 10:00 AM - 4:00 PM IST<br />
                                 Sunday: Emergency Support Only</p>
                             </div>
                             <div className="info-item">
                                 <strong>Address:</strong>
-                                <p>123 Healthcare Plaza<br />
-                                Medical District, NY 10001<br />
+                                <p>25-5-226/B/A/1, Venkateshwara Colony<br />
+                                Beside Almas Function, Jadcherla<br />
+                                Mahabubnagar, Telangana-509301<br />
                                 India</p>
+                            </div>
+                            <div className="info-item">
+                                <strong>Phone:</strong>
+                                <p>+91 7569382457</p>
                             </div>
                         </div>
                     </div>

@@ -19,7 +19,6 @@ const LandingPage = () => {
         { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
         { code: 'zh', name: '中文', flag: '🇨🇳' },
         { code: 'ar', name: 'العربية', flag: '🇸🇦' },
-        
     ];
 
     useEffect(() => {
@@ -46,7 +45,7 @@ const LandingPage = () => {
                 <div className="header-content">
                     <div className="logo">
                     <img src="/logo.jpg" alt="Insta-Appointment Logo" className="logo-img" />
-                    <span className="logo-text">INSTA-APPOINTMENT</span>
+                    <span className="logo-text">DERMA CARE</span>
                     </div>
                     
                     <div className="language-selector">
@@ -92,15 +91,9 @@ const LandingPage = () => {
                             {t('Connect with certified dermatologists instantly. Get professional skin care consultation, diagnosis, and treatment plans from the comfort of your home.')}
                         </p>
                         <div className="hero-buttons">
-                            <button 
-                                className="btn-primary"
-                                onClick={() => handleAuthNavigation('signup')}
-                            >
-                                {t('Get Started')}
-                            </button>
-                            <button className="btn-secondary">
-                                {t('Learn More')}
-                            </button>
+                            <h2 className="software-provider-text">
+                                Best Software provider for Dermatologist
+                            </h2>
                         </div>
                     </div>
                     <div className="hero-visual">
@@ -295,9 +288,9 @@ const LandingPage = () => {
                         <div className="footer-section">
                             <h3>{t('Contact Info')}</h3>
                             <ul>
-                                <li>📧 support@dermacare.com</li>
-                                <li>📞 +1 (555) 123-4567</li>
-                                <li>📍 {t('Available Worldwide')}</li>
+                                <li>📧 nikhiljagatkari@gmail.com</li>
+                                <li>📞 +91 7569382457</li>
+                                <li>📍 25-5-226/B/A/1, Venkateshwara Colony, Beside Almas Function, Jadcherla Mahabubnagar, Telangana-509301</li>
                             </ul>
                         </div>
                         <div className="footer-section">

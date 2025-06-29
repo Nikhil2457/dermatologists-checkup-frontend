@@ -148,10 +148,11 @@ const PrivacyPolicy = () => {
                         <h2>11. Contact Us</h2>
                         <p>If you have questions about this Privacy Policy or our data practices, please contact us:</p>
                         <ul>
-                            <li>Email: privacy@dermacare.com</li>
-                            <li>Phone: +1 (555) 123-4567</li>
-                            <li>Address: [Your Business Address]</li>
-                            <li>Data Protection Officer: dpo@dermacare.com</li>
+                            <li>Contact Person: Jagatkari Nikhil</li>
+                            <li>Email: nikhiljagatkari@gmail.com</li>
+                            <li>Phone: +91 7569382457</li>
+                            <li>Address: 25-5-226/B/A/1, Venkateshwara Colony, Beside Almas Function, Jadcherla Mahabubnagar, Telangana-509301</li>
+                            <li>Data Protection Officer: nikhiljagatkari@gmail.com</li>
                         </ul>
                     </section>
 

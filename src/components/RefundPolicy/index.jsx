@@ -111,7 +111,7 @@ const RefundPolicy = () => {
                         <h2>7. Payment Processing</h2>
                         <ul>
                             <li>All payments are processed securely through PhonePe</li>
-                            <li>Refunds will be processed to the original payment method</li>
+                            <li>Refunds will be credited to the original payment method with 7- 10 working days</li>
                             <li>Bank processing times may vary (3-10 business days)</li>
                             <li>You will receive email confirmation when refund is processed</li>
                         </ul>
@@ -121,8 +121,10 @@ const RefundPolicy = () => {
                         <h2>8. Contact Information</h2>
                         <p>For refund requests or questions about this policy:</p>
                         <ul>
-                            <li>Email: refunds@dermacare.com</li>
-                            <li>Phone: +1 (555) 123-4567</li>
+                            <li>Contact Person: Jagatkari Nikhil</li>
+                            <li>Email: nikhiljagatkari@gmail.com</li>
+                            <li>Phone: +91 7569382457</li>
+                            <li>Address: 25-5-226/B/A/1, Venkateshwara Colony, Beside Almas Function, Jadcherla Mahabubnagar, Telangana-509301</li>
                             <li>Support Hours: 24/7</li>
                             <li>Response Time: Within 24 hours</li>
                         </ul>

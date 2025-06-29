@@ -116,9 +116,10 @@ const TermsOfService = () => {
                         <h2>12. Contact Information</h2>
                         <p>For questions about these Terms of Service, please contact us:</p>
                         <ul>
-                            <li>Email: legal@dermacare.com</li>
-                            <li>Phone: +1 (555) 123-4567</li>
-                            <li>Address: [Your Business Address]</li>
+                            <li>Contact Person: Jagatkari Nikhil</li>
+                            <li>Email: nikhiljagatkari@gmail.com</li>
+                            <li>Phone: +91 7569382457</li>
+                            <li>Address: 25-5-226/B/A/1, Venkateshwara Colony, Beside Almas Function, Jadcherla Mahabubnagar, Telangana-509301</li>
                         </ul>
                     </section>
 
