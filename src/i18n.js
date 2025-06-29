@@ -73,7 +73,9 @@ i18n.use(initReactI18next).init({
         "Contact Info": "संपर्क जानकारी",
         "Available Worldwide": "विश्वभर में उपलब्ध",
         "Follow Us": "हमें फॉलो करें",
-        "All rights reserved.": "सर्वाधिकार सुरक्षित।"
+        "All rights reserved.": "सर्वाधिकार सुरक्षित।",
+        "Best Software provider for Dermatologist": "सबसे अच्छा सॉफ्टवेयर प्रदाता डेर्मा केयर के लिए",
+        "One Stop Software For all Dermatologists appointments and checkups": "सभी डेर्मा केयर अपॉइंटमेंट और जांच के लिए एक स्टॉप सॉफ्टवेयर"
       } },
     es: { translation: { "Sign In": "Iniciar sesión", "Sign Up": "Registrarse", /* ...add more keys */ } },
     fr: { translation: { "Sign In": "Se connecter", "Sign Up": "S'inscrire", /* ...add more keys */ } },
@@ -149,7 +151,9 @@ i18n.use(initReactI18next).init({
         "Contact Info": "సంప్రదింపు సమాచారం",
         "Available Worldwide": "ప్రపంచవ్యాప్తంగా అందుబాటులో",
         "Follow Us": "మమ్మల్ని అనుసరించండి",
-        "All rights reserved.": "అన్ని హక్కులు పరిరక్షించబడ్డాయి."
+        "All rights reserved.": "అన్ని హక్కులు పరిరక్షించబడ్డాయి.",
+        "Best Software provider for Dermatologist": "సబసెస్ సాఫ్ట్వేయర్ ప్రదాతా డెర్మటాలజిస్టులు కోసం",
+        "One Stop Software For all Dermatologists appointments and checkups": "సభ్యత్వం ప్రతి డెర్మటాలజిస్టులు అపాయింట్మెంట్లు మరియు జాంచ్స్ కోసం ఒక స్టాప్ సాఫ్ట్వేయర్"
       } },
     // Add more languages here
   },

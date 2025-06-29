@@ -92,7 +92,7 @@ const LandingPage = () => {
                         </p>
                         <div className="hero-buttons">
                             <h2 className="software-provider-text">
-                                Best Software provider for Dermatologist
+                                {t('Best Software provider for Dermatologist')}
                             </h2>
                         </div>
                     </div>
