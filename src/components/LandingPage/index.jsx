@@ -88,7 +88,7 @@ const LandingPage = () => {
                             <span className="highlight"> {t('at Your Fingertips')}</span>
                         </h1>
                         <p className="hero-subtitle">
-                            {t('Connect with certified dermatologists instantly. Get professional skin care consultation, diagnosis, and treatment plans from the comfort of your home.')}
+                            {t('One Stop Software For all Dermatologists appointments and checkups')}
                         </p>
                         <div className="hero-buttons">
                             <h2 className="software-provider-text">

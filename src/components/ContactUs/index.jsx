@@ -224,15 +224,7 @@ const ContactUs = () => {
                     </div>
 
                     <div className="contact-info-section">
-                        <h2>Frequently Asked Questions</h2>
-                        <div className="faq-list">
-                            {faqs.map((faq, index) => (
-                                <div key={index} className="faq-item">
-                                    <h4>{faq.question}</h4>
-                                    <p>{faq.answer}</p>
-                                </div>
-                            ))}
-                        </div>
+                        
 
                         <div className="office-info">
                             <h2>Office Information</h2>
