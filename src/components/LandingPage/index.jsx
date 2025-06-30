@@ -44,7 +44,7 @@ const LandingPage = () => {
             <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
                 <div className="header-content">
                     <div className="logo">
-                    <img src="/logo.jpg" alt="Insta-Appointment Logo" className="logo-img" />
+                    <img src="/logo.png" alt="Insta-Appointment Logo" className="logo-img" />
                     <span className="logo-text">DERMA CARE</span>
                     </div>
                     
