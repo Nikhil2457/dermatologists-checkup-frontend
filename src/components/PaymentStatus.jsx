@@ -29,13 +29,13 @@ const PaymentStatus = () => {
 
   const pollPaymentStatus = async (orderId) => {
     let attempts = 0;
-    const maxAttempts = 20;
+    const maxAttempts = 10;
     const interval = setInterval(async () => {
       attempts++;
       try {
         const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/phonepe/status/${orderId}`);
         if (res.data && res.data.status) {
-          if (res.data.status === 'SUCCESS') {
+          if (res.data.status === 'SUCCESS' || res.data.status === 'COMPLETED') {
             setStatus('success');
             setPolling(false);
             clearInterval(interval);
@@ -48,9 +48,15 @@ const PaymentStatus = () => {
             toast.error('Payment failed. Please try again.');
             setTimeout(() => navigate('/'), 2000);
           }
+        } else if (res.data && res.data.error) {
+          // Backend returned an error
+          console.error('Backend error:', res.data);
+          toast.error(`Backend error: ${res.data.message || res.data.error}`);
         }
       } catch (err) {
-        // Optionally handle error
+        // Log and show backend/network error
+        console.error('Network or backend error:', err);
+        toast.error(`Network or backend error: ${err.response?.data?.message || err.message}`);
       }
       if (attempts >= maxAttempts) {
         setPolling(false);
