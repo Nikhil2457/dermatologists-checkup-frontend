@@ -16,24 +16,16 @@ const ContactUsModal = ({ userRole, onClose }) => {
       try {
         const token = localStorage.getItem('token');
         let userRes, dermRes;
-        
-        try {
+  
+        if (userRole === 'patient') {
           userRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/patient/me`, { 
             headers: { Authorization: `Bearer ${token}` }
           });
-        } catch (err) {
-          try {
-            dermRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/dermatologist/me`, { 
-              headers: { Authorization: `Bearer ${token}` }
-            });
-          } catch (dermErr) {
-            console.log('No user logged in');
-            return;
-          }
-        }
-        if (userRole === 'patient') {
           setUser(userRes.data);
-        } else {
+        } else if (userRole === 'dermatologist') {
+          dermRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/dermatologist/me`, { 
+            headers: { Authorization: `Bearer ${token}` }
+          });
           const userObj = dermRes.data.user;
           const profile = dermRes.data.profile;
           setUser({

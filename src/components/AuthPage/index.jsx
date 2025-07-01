@@ -21,6 +21,7 @@ function AuthPage() {
   const [isRedirecting, setIsRedirecting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [agreedTerms, setAgreedTerms] = useState(false);
+  const [loginLoading, setLoginLoading] = useState(false);
   const navigate = useNavigate();
 
   const toggleRole = (newRole) => {
@@ -86,6 +87,7 @@ function AuthPage() {
   // Signup/Login handler
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoginLoading(true);
     if (!isLogin && role === 'patient') {
       if (!/^[0-9]{10}$/.test(phoneNumber)) {
         toast.error('Phone number must be 10 digits');
@@ -130,6 +132,8 @@ function AuthPage() {
       }, 2000);
     } catch (err) {
       toast.error(err.response?.data?.message || 'Something went wrong');
+    } finally {
+      setLoginLoading(false);
     }
   };
 
@@ -281,8 +285,8 @@ function AuthPage() {
 
           {/* Dermatologist Signup or Login: Normal flow */}
           {(isLogin || role === 'dermatologist') && (
-            <button type="submit" className="auth-page-submit-btn">
-              {isLogin ? 'Login' : 'Signup'}
+            <button type="submit" className="auth-page-submit-btn" disabled={loginLoading}>
+              {loginLoading ? 'Logging in...' : (isLogin ? 'Login' : 'Signup')}
             </button>
           )}
 

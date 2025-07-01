@@ -2,29 +2,65 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const PaymentStatus = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [polling, setPolling] = useState(false);
+  const [orderId, setOrderId] = useState(null);
   const [status, setStatus] = useState('processing');
 
-  // Extract orderId, patientId, dermatologistId from query params
-  const params = new URLSearchParams(location.search);
-  const orderId = params.get('orderId');
-  const patientId = params.get('patientId');
-  const dermatologistId = params.get('dermatologistId');
-
   useEffect(() => {
-    if (orderId && patientId && dermatologistId) {
-      setStatus('success');
-      toast.success('Payment successful! You can now submit your checkup request.');
-      setTimeout(() => navigate('/dermatologists'), 3000); // Redirect to patient dashboard
+    const params = new URLSearchParams(location.search);
+    const orderIdParam = params.get('orderId');
+    setOrderId(orderIdParam);
+    if (orderIdParam) {
+      setPolling(true);
+      setStatus('processing');
+      pollPaymentStatus(orderIdParam);
     } else {
       setStatus('failure');
       toast.error('Missing payment information. Please try again.');
       setTimeout(() => navigate('/'), 2000);
     }
-  }, [orderId, patientId, dermatologistId, navigate]);
+    // eslint-disable-next-line
+  }, [location.search]);
+
+  const pollPaymentStatus = async (orderId) => {
+    let attempts = 0;
+    const maxAttempts = 20;
+    const interval = setInterval(async () => {
+      attempts++;
+      try {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/phonepe/status/${orderId}`);
+        if (res.data && res.data.status) {
+          if (res.data.status === 'SUCCESS') {
+            setStatus('success');
+            setPolling(false);
+            clearInterval(interval);
+            toast.success('Payment successful! You can now submit your checkup request.');
+            setTimeout(() => navigate('/dermatologists'), 2000);
+          } else if (res.data.status === 'FAILED') {
+            setStatus('failure');
+            setPolling(false);
+            clearInterval(interval);
+            toast.error('Payment failed. Please try again.');
+            setTimeout(() => navigate('/'), 2000);
+          }
+        }
+      } catch (err) {
+        // Optionally handle error
+      }
+      if (attempts >= maxAttempts) {
+        setPolling(false);
+        setStatus('timeout');
+        clearInterval(interval);
+        toast.error('Payment status check timed out.');
+        setTimeout(() => navigate('/'), 2000);
+      }
+    }, 5000);
+  };
 
   return (
     <div style={{ 
@@ -67,6 +103,19 @@ const PaymentStatus = () => {
         <>
           <div style={{ color: 'red', fontSize: 22, fontWeight: 700, marginBottom: 10 }}>
             ❌ Payment Failed
+          </div>
+          <div style={{ color: '#666', fontSize: 16, marginBottom: 20 }}>
+            Redirecting to home...
+          </div>
+          <div style={{ fontSize: 12, color: '#999' }}>
+            Order ID: {orderId}
+          </div>
+        </>
+      )}
+      {status === 'timeout' && (
+        <>
+          <div style={{ color: 'orange', fontSize: 22, fontWeight: 700, marginBottom: 10 }}>
+            Payment status check timed out.
           </div>
           <div style={{ color: '#666', fontSize: 16, marginBottom: 20 }}>
             Redirecting to home...

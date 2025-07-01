@@ -584,6 +584,8 @@ const DermatologistDashboard = () => {
       {isContactModalOpen && (
         <ContactUsModal
           userRole="dermatologist"
+          dermatologistName={dermatologistName}
+          dermatologistId={dermatologistId}
           onClose={() => setIsContactModalOpen(false)}
         />
       )}
