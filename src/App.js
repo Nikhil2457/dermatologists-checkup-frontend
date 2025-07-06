@@ -17,6 +17,8 @@ import TermsOfService from './components/TermsOfService';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import RefundPolicy from './components/RefundPolicy';
 import ContactUs from './components/ContactUs';
+import PaymentSuccess from './components/PaymentSuccess';
+import PaymentFailure from './components/PaymentFailure';
 
 function App() {
   return (
@@ -43,7 +45,8 @@ function App() {
         <Route path="/admin/add-dermatologist" element={<AddDermatologistForm />} />
         <Route path="/admin" element={<AdminLogin/>} />
         <Route path='/admin/dashboard' element={<AdminDashboard/>} />
-        <Route path='/payment-status' element={<PaymentStatus/>} />
+        <Route path="/success" element={<PaymentSuccess />} />
+        <Route path="/failure" element={<PaymentFailure />} />
         <Route path="*" element={<LandingPage />} />
       </Routes>
 
