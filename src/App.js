@@ -19,6 +19,7 @@ import RefundPolicy from './components/RefundPolicy';
 import ContactUs from './components/ContactUs';
 import PaymentSuccess from './components/PaymentSuccess';
 import PaymentFailure from './components/PaymentFailure';
+import PaymentCallback from './components/PaymentCallback';
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
         <Route path='/admin/dashboard' element={<AdminDashboard/>} />
         <Route path="/success" element={<PaymentSuccess />} />
         <Route path="/failure" element={<PaymentFailure />} />
+        <Route path="/payment-callback" element={<PaymentCallback />} />
         <Route path="*" element={<LandingPage />} />
       </Routes>
 
