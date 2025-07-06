@@ -11,7 +11,7 @@ import RequestedStatus from './components/RequestedStatus/RequestedStatus';
 import AddDermatologistForm from './components/AddDentistForm/AddDermatologistForm';
 import AdminLogin from './components/AdminLogin';
 import AdminDashboard from './components/AdminDashboard';
-import PaymentStatus from './components/PaymentStatus';
+
 import LandingPage from './components/LandingPage';
 import TermsOfService from './components/TermsOfService';
 import PrivacyPolicy from './components/PrivacyPolicy';
