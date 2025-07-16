@@ -68,8 +68,8 @@ function AuthPage() {
   // Verify OTP handler
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
-    if (!otp || otp.length !== 6) {
-      toast.error('Enter the 6-digit OTP');
+    if (!otp || otp.length !== 4) {
+      toast.error('Enter the 4-digit OTP');
       return;
     }
     setOtpLoading(true);
@@ -237,7 +237,7 @@ function AuthPage() {
                     placeholder="Enter OTP"
                     value={otp}
                     onChange={(e) => setOtp(e.target.value)}
-                    maxLength={6}
+                    maxLength={4}
                     required
                   />
                   <button
