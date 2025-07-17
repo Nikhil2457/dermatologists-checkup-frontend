@@ -79,6 +79,13 @@ export default function ForgotCredentials() {
           <button type="submit" className="fc-btn" disabled={loading}>
             {loading ? "Checking..." : "Find Accounts"}
           </button>
+          <button
+            type="button"
+            className="fc-btn fc-back-btn"
+            onClick={() => window.location.hash = "#/auth"}
+          >
+            Back
+          </button>
         </form>
       )}
 
