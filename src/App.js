@@ -20,6 +20,7 @@ import ContactUs from './components/ContactUs';
 import PaymentSuccess from './components/PaymentSuccess';
 import PaymentFailure from './components/PaymentFailure';
 import PaymentCallback from './components/PaymentCallback';
+import ForgotCredentials from './components/ForgotCredentials/ForgotCredentials';
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
         <Route path="/failure" element={<PaymentFailure />} />
         <Route path="/payment-callback" element={<PaymentCallback />} />
         <Route path="*" element={<LandingPage />} />
+        <Route path="/forgot-credentials" element={<ForgotCredentials />} />
       </Routes>
 
       <ToastContainer position="top-right" autoClose={2000} />

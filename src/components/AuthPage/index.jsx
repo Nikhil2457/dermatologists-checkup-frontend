@@ -306,6 +306,16 @@ function AuthPage() {
             <p className="auth-page-toggle-link" onClick={() => navigate('/admin')}>Admin? Login here</p>
           </>
         )}
+
+        {isLogin && (
+          <p
+            className="auth-page-toggle-link"
+            style={{ color: "#4f8cff", cursor: "pointer", marginTop: "0.5rem" }}
+            onClick={() => navigate('/forgot-credentials')}
+          >
+            Forgot username/password?
+          </p>
+        )}
       </div>
     </div>
   );
